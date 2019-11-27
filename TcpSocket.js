@@ -370,12 +370,14 @@ TcpSocket.prototype._write = function(buffer: any, encoding: ?String, callback: 
   if (typeof buffer === 'string') {
     self._debug('socket.WRITE(): encoding as base64');
     str = Base64Str.encode(buffer);
-  } else if (Buffer.isBuffer(buffer)) {
-    str = buffer.toString('base64');
+  //} else if (Buffer.isBuffer(buffer)) {
   } else {
-    throw new TypeError(
-      'Invalid data, chunk must be a string or buffer, not ' + typeof buffer);
-  }
+    str = buffer.toString('base64');
+  } 
+  // else {
+  //  throw new TypeError(
+  //    'Invalid data, chunk must be a string or buffer, not ' + typeof buffer);
+  //}
 
   Sockets.write(this._id, str, function(err) {
     if (self._timeout) {
