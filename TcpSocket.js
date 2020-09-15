@@ -387,19 +387,12 @@ TcpSocket.prototype._write = function (
     str = Base64Str.encode(buffer);
   //} else if (Buffer.isBuffer(buffer)) {
   } else {
-<<<<<<< HEAD
-    throw new TypeError(
-      'Invalid data, chunk must be a string or buffer, not ' + typeof buffer,
-    );
-  }
-=======
     str = buffer.toString('base64');
   } 
   // else {
   //  throw new TypeError(
   //    'Invalid data, chunk must be a string or buffer, not ' + typeof buffer);
   //}
->>>>>>> Fix isBuffer problem
 
   Sockets.write(this._id, str, function (err) {
     if (self._timeout) {
